@@ -1,0 +1,459 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .root {
+    background: linear-gradient(160deg, #1E1F26 0%, #1a2035 50%, #283655 100%);
+    min-height: 100vh;
+    padding: 2rem 1.25rem 2.5rem;
+    font-family: var(--font-sans), sans-serif;
+    color: #D0E1F9;
+  }
+
+  /* Header */
+  .hero { text-align: center; margin-bottom: 2rem; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(208,225,249,0.1);
+    border: 1px solid rgba(208,225,249,0.25);
+    color: #D0E1F9;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 26px; font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .hero p { font-size: 14px; color: #7a9cc8; }
+
+  /* Divider accent */
+  .accent-line {
+    width: 48px; height: 3px;
+    background: linear-gradient(90deg, #4D648D, #D0E1F9);
+    border-radius: 2px;
+    margin: 10px auto 0;
+  }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 1.75rem; }
+  .stat {
+    background: rgba(40,54,85,0.6);
+    border: 1px solid rgba(77,100,141,0.4);
+    border-radius: 14px;
+    padding: 16px 10px;
+    text-align: center;
+  }
+  .stat-val { font-size: 24px; font-weight: 600; color: #D0E1F9; }
+  .stat-label { font-size: 11.5px; color: #4D648D; margin-top: 4px; letter-spacing: .02em; }
+
+  /* Tip */
+  .tip {
+    background: rgba(77,100,141,0.18);
+    border: 1px solid rgba(77,100,141,0.45);
+    border-left: 3px solid #4D648D;
+    border-radius: 0 12px 12px 0;
+    padding: 13px 16px;
+    margin-bottom: 1.75rem;
+    font-size: 13.5px;
+    color: #a8c4e8;
+    line-height: 1.7;
+  }
+  .tip strong { color: #D0E1F9; font-weight: 600; }
+
+  /* Section title */
+  .section-title {
+    font-size: 15px; font-weight: 600; color: #D0E1F9;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+    letter-spacing: .01em;
+  }
+  .section-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px; height: 18px; border-radius: 2px;
+    background: linear-gradient(180deg, #D0E1F9, #4D648D);
+    flex-shrink: 0;
+  }
+
+  /* Steps */
+  .steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.75rem; }
+  .step { display: flex; gap: 14px; }
+  .step-left { display: flex; flex-direction: column; align-items: center; }
+  .step-num {
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 600; flex-shrink: 0;
+    border: 1.5px solid;
+    background: rgba(40,54,85,0.8);
+    color: #D0E1F9;
+    border-color: #4D648D;
+  }
+  .step-line {
+    width: 1.5px; flex: 1; min-height: 18px; margin: 5px 0;
+    background: linear-gradient(180deg, #4D648D44, transparent);
+  }
+
+  .step-body {
+    background: rgba(30,31,38,0.55);
+    border: 1px solid rgba(77,100,141,0.3);
+    border-radius: 14px;
+    padding: 14px 16px;
+    flex: 1;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .step-body:hover {
+    border-color: rgba(208,225,249,0.4);
+    background: rgba(40,54,85,0.55);
+  }
+
+  .step-header { display: flex; justify-content: space-between; align-items: flex-start; }
+  .step-title { font-size: 15px; font-weight: 600; color: #e8f0fb; margin-bottom: 4px; }
+  .step-desc { font-size: 13px; color: #5a7aaa; line-height: 1.6; }
+  .expand-btn {
+    font-size: 12px; font-weight: 500; color: #7a9cc8;
+    background: none; border: none; cursor: pointer;
+    font-family: inherit; padding: 0; margin-top: 8px;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .expand-btn:hover { color: #D0E1F9; }
+
+  .step-detail {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(77,100,141,0.25);
+    font-size: 13.5px;
+    color: #8aacce;
+    line-height: 1.8;
+  }
+  .step-detail.open { display: block; }
+  .step-detail strong { color: #D0E1F9; font-weight: 600; }
+
+  /* Step number accent colors — subtle variation */
+  .n1 .step-num { border-color: #D0E1F9; color: #D0E1F9; }
+  .n2 .step-num { border-color: #8fb8e8; color: #8fb8e8; }
+  .n3 .step-num { border-color: #6d94c4; color: #6d94c4; }
+  .n4 .step-num { border-color: #D0E1F9; color: #D0E1F9; }
+  .n5 .step-num { border-color: #8fb8e8; color: #8fb8e8; }
+  .n6 .step-num { border-color: #6d94c4; color: #6d94c4; }
+
+  /* Pills */
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .pill {
+    font-size: 11.5px; font-weight: 500; padding: 3px 12px;
+    border-radius: 20px; border: 1px solid;
+  }
+  .p1 { background: rgba(208,225,249,0.1); color: #D0E1F9; border-color: rgba(208,225,249,0.3); }
+  .p2 { background: rgba(77,100,141,0.25); color: #a8c4e8; border-color: rgba(77,100,141,0.5); }
+  .p3 { background: rgba(40,54,85,0.5); color: #7a9cc8; border-color: rgba(77,100,141,0.35); }
+  .p4 { background: rgba(30,31,38,0.5); color: #5a7aaa; border-color: rgba(77,100,141,0.25); }
+
+  /* Resource grid */
+  .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.75rem; }
+  .res-card {
+    background: rgba(30,31,38,0.55);
+    border: 1px solid rgba(77,100,141,0.28);
+    border-radius: 14px;
+    padding: 13px 14px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .res-card:hover {
+    border-color: rgba(208,225,249,0.35);
+    background: rgba(40,54,85,0.45);
+  }
+  .res-type {
+    font-size: 10.5px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: #4D648D; margin-bottom: 5px;
+  }
+  .res-name { font-size: 14px; font-weight: 600; color: #D0E1F9; margin-bottom: 4px; }
+  .res-desc { font-size: 12px; color: #5a7aaa; line-height: 1.55; }
+  .res-tag {
+    display: inline-block; margin-top: 8px;
+    font-size: 11px; font-weight: 500;
+    background: rgba(77,100,141,0.2);
+    color: #7a9cc8;
+    border: 1px solid rgba(77,100,141,0.35);
+    padding: 2px 10px; border-radius: 10px;
+  }
+
+  /* Ask buttons */
+  .ask-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ask-btn {
+    font-size: 13px; font-weight: 500; color: #a8c4e8;
+    background: rgba(40,54,85,0.5);
+    border: 1px solid rgba(77,100,141,0.4);
+    border-radius: 30px; padding: 8px 18px;
+    cursor: pointer; font-family: inherit;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .ask-btn:hover {
+    background: rgba(77,100,141,0.4);
+    border-color: rgba(208,225,249,0.4);
+    color: #D0E1F9;
+  }
+
+  @media (max-width: 500px) {
+    .resource-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="root">
+
+  <div class="hero">
+    <div class="hero-badge">PMI · CAPM · 2026</div>
+    <h1>Tu ruta hacia la certificación CAPM</h1>
+    <p>Bachiller en Ingeniería Civil — PUCP · Lima, Perú</p>
+    <div class="accent-line"></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-val">~6</div>
+      <div class="stat-label">meses estimados</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">23h</div>
+      <div class="stat-label">educación requerida</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">150</div>
+      <div class="stat-label">preguntas en examen</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <strong>Tu ventaja como Ing. Civil PUCP:</strong> Como bachiller universitario, el PMI no te exige experiencia laboral en proyectos — solo las 23 horas de educación en PM. Tu base en planificación, costos, cronogramas y obras es tu punto de partida ideal.
+  </div>
+
+  <div class="section-title">Hoja de ruta paso a paso</div>
+  <div class="steps">
+
+    <div class="step n1">
+      <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+      <div class="step-body" onclick="toggle(this)">
+        <div class="step-title">Verifica tus requisitos de elegibilidad</div>
+        <div class="step-desc">Como bachiller universitario cumples automáticamente el requisito principal.</div>
+        <button class="expand-btn">Ver detalles ↓</button>
+        <div class="step-detail">
+          El PMI acepta dos perfiles:<br><br>
+          <strong>Perfil A — Tu caso:</strong> Título universitario (Bachiller) + 23 horas de educación en PM. Sin experiencia laboral requerida.<br><br>
+          <strong>Perfil B:</strong> Diploma de secundaria + 1,500 horas de experiencia en proyectos + 23 horas educación PM.<br><br>
+          Como bachiller de la PUCP estás en el Perfil A. ¡Gran ventaja!
+          <div class="pills">
+            <span class="pill p1">Bachiller universitario ✓</span>
+            <span class="pill p2">Sin req. de experiencia</span>
+            <span class="pill p3">23h educación PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step n2">
+      <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+      <div class="step-body" onclick="toggle(this)">
+        <div class="step-title">Obtén las 23 horas de educación en PM</div>
+        <div class="step-desc">Curso autorizado en gestión de proyectos. Obligatorio antes de postular.</div>
+        <button class="expand-btn">Ver detalles ↓</button>
+        <div class="step-detail">
+          <strong>Opciones recomendadas:</strong><br><br>
+          • <strong>PM PrepCast for CAPM</strong> — Curso ATP-approved de 23h. ~USD 250. Certificado válido para tu aplicación.<br>
+          • <strong>Udemy</strong> — Cursos de Joseph Phillips o Andrew Ramdayal. Desde ~USD 15–30 en oferta.<br>
+          • <strong>PMI Learning</strong> — Curso oficial en pmi.org "CAPM Exam Prep".<br>
+          • <strong>Chapter PMI Lima</strong> — Bootcamps presenciales o virtuales. Ideal para networking.<br>
+          • <strong>PUCP Continua</strong> — Consulta si sus cursos de PM aplican al requisito PMI.
+          <div class="pills">
+            <span class="pill p1">PrepCast ~USD 250</span>
+            <span class="pill p2">Udemy ~USD 15–30</span>
+            <span class="pill p3">Chapter PMI Lima</span>
+            <span class="pill p4">PUCP Continua</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step n3">
+      <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+      <div class="step-body" onclick="toggle(this)">
+        <div class="step-title">Crea tu cuenta PMI y presenta la solicitud</div>
+        <div class="step-desc">Formulario online en pmi.org, adjunta documentos y espera ~5 días hábiles.</div>
+        <button class="expand-btn">Ver detalles ↓</button>
+        <div class="step-detail">
+          <strong>Proceso:</strong><br><br>
+          1. Crear cuenta gratuita en pmi.org<br>
+          2. Completar formulario de aplicación (guardado automático)<br>
+          3. Adjuntar: diploma universitario + certificado de 23h<br>
+          4. PMI revisa en ~5 días hábiles<br>
+          5. Aprobado → pagas la tarifa de examen<br><br>
+          <strong>Costo del examen (2026):</strong><br>
+          • <strong>Sin membresía PMI: USD 300</strong><br>
+          • Con membresía PMI (USD 139/año): USD 225<br><br>
+          Si solo buscas el CAPM ahora, los USD 300 sin membresía es la opción más directa. Si planeas el PMP después, la membresía empieza a valer.
+          <div class="pills">
+            <span class="pill p1">USD 300 sin membresía</span>
+            <span class="pill p2">USD 225 con membresía</span>
+            <span class="pill p3">Pearson VUE / Online</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step n4">
+      <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+      <div class="step-body" onclick="toggle(this)">
+        <div class="step-title">Estudia: domina el PMBOK y el ECO</div>
+        <div class="step-desc">Plan estructurado de 10–12 semanas. El núcleo de toda tu preparación.</div>
+        <button class="expand-btn">Ver detalles ↓</button>
+        <div class="step-detail">
+          <strong>Materiales esenciales:</strong><br><br>
+          • <strong>ECO (Exam Content Outline)</strong> — Descárgalo gratis en pmi.org. Es el temario exacto del examen. Empieza aquí.<br>
+          • <strong>PMBOK® Guide 7ª ed.</strong> — PDF gratis con membresía. Físico ~USD 50 en Amazon.<br>
+          • <strong>Process Groups: A Practice Guide</strong> — Clave para procesos tradicionales evaluados en CAPM.<br>
+          • <strong>PM Exam Simulator</strong> (prepcast.com) — El mejor valorado. +1,000 preguntas. ~USD 99.<br>
+          • <strong>Pocket Prep</strong> — App móvil para practicar a diario.<br><br>
+          <strong>Plan de 12 semanas:</strong><br>
+          Sem. 1–3: ECO + fundamentos PMBOK · Sem. 4–7: Áreas de conocimiento · Sem. 8–10: Ágil e híbrido (~50% del examen) · Sem. 11–12: Simulacros intensivos (500–700 preguntas)
+          <div class="pills">
+            <span class="pill p1">ECO gratis en pmi.org</span>
+            <span class="pill p2">PMBOK 7ª ed.</span>
+            <span class="pill p3">PM Exam Simulator ~USD 99</span>
+            <span class="pill p4">Pocket Prep app</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step n5">
+      <div class="step-left"><div class="step-num">5</div><div class="step-line"></div></div>
+      <div class="step-body" onclick="toggle(this)">
+        <div class="step-title">Agenda y rinde el examen CAPM</div>
+        <div class="step-desc">150 preguntas · 3 horas · Online desde casa o en centro Pearson VUE.</div>
+        <button class="expand-btn">Ver detalles ↓</button>
+        <div class="step-detail">
+          <strong>Formato del examen 2026:</strong><br><br>
+          • 150 preguntas (135 calificadas + 15 de prueba sin puntaje)<br>
+          • 3 horas de duración<br>
+          • Online con proctor remoto (Pearson VUE OnVUE) o presencial<br>
+          • Resultado inmediato: pass/fail al finalizar<br>
+          • Hasta 3 intentos por año de elegibilidad<br><br>
+          <strong>Distribución del contenido (ECO 2024–2026):</strong><br>
+          • Gestión predictiva (cascada): ~50%<br>
+          • Gestión ágil, híbrida + análisis de negocio: ~50%<br><br>
+          <strong>Tip:</strong> El examen evalúa situaciones reales, no definiciones. Practica con simulacros de tiempo: tienes ~72 segundos por pregunta.
+          <div class="pills">
+            <span class="pill p1">Online desde casa ✓</span>
+            <span class="pill p2">Pearson VUE Lima</span>
+            <span class="pill p3">Inglés recomendado</span>
+            <span class="pill p4">72 seg/pregunta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step n6">
+      <div class="step-left"><div class="step-num">6</div></div>
+      <div class="step-body" onclick="toggle(this)">
+        <div class="step-title">¡Certificado! Mantén tu CAPM activo</div>
+        <div class="step-desc">Renovación cada 3 años con 15 PDUs. Ya no se necesita re-tomar el examen.</div>
+        <button class="expand-btn">Ver detalles ↓</button>
+        <div class="step-detail">
+          <strong>Cambio clave desde 2020:</strong> El CAPM ya no requiere rendir el examen nuevamente. Se renueva con PDUs igual que el PMP.<br><br>
+          <strong>Requisitos cada 3 años:</strong><br>
+          • Mínimo 15 PDUs (1 PDU = 1 hora de desarrollo profesional)<br>
+          • Mín. 9 PDUs de Educación (2 en cada área del Talent Triangle)<br>
+          • Hasta 6 PDUs por voluntariado, mentoring o creación de contenido<br>
+          • Tarifa de renovación: <strong>USD 150 sin membresía</strong> / USD 60 con membresía<br><br>
+          <strong>Próxima meta:</strong> Con experiencia en proyectos accedes al <strong>PMP</strong> — la certificación más reconocida globalmente.
+          <div class="pills">
+            <span class="pill p1">3 años de vigencia</span>
+            <span class="pill p2">15 PDUs para renovar</span>
+            <span class="pill p3">USD 150 renovación</span>
+            <span class="pill p4">Camino al PMP →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Resources -->
+  <div class="section-title">Recursos y canales recomendados</div>
+  <div class="resource-grid">
+
+    <div class="res-card" onclick="sendPrompt('Cuéntame más sobre el canal de Andrew Ramdayal para preparar el CAPM')">
+      <div class="res-type">YouTube · Inglés</div>
+      <div class="res-name">Andrew Ramdayal</div>
+      <div class="res-desc">Instructor #1 de PMP/CAPM en Udemy. Canal TIA con horas de contenido gratuito y estrategias de examen muy efectivas.</div>
+      <span class="res-tag">@tiaexams · Gratis</span>
+    </div>
+
+    <div class="res-card" onclick="sendPrompt('Cuéntame sobre el canal David McLachlan para preparar el CAPM')">
+      <div class="res-type">YouTube · Inglés</div>
+      <div class="res-name">David McLachlan</div>
+      <div class="res-desc">PMP, ACP y CAPM certified. Videos especializados en metodologías ágiles y cómo pasar los exámenes PMI. Muy didáctico.</div>
+      <span class="res-tag">@DavidMcLachlan · Gratis</span>
+    </div>
+
+    <div class="res-card" onclick="sendPrompt('Cuéntame sobre el canal PMPwithRay para el examen CAPM 2026')">
+      <div class="res-type">YouTube · Inglés</div>
+      <div class="res-name">PMPwithRay</div>
+      <div class="res-desc">Cubre el formato actualizado del examen 2025–2026. Ideal para preguntas de escenario y el enfoque ágil del examen.</div>
+      <span class="res-tag">@PMPwithRay · Gratis</span>
+    </div>
+
+    <div class="res-card" onclick="sendPrompt('Qué canales en español recomiendas para gestión de proyectos y CAPM?')">
+      <div class="res-type">YouTube · Español</div>
+      <div class="res-name">iPMOGuide</div>
+      <div class="res-desc">El mejor canal hispanohablante sobre PMP, PMO, Scrum y agilidad. Referente para profesionales PM de habla hispana.</div>
+      <span class="res-tag">@iPMOGuide · Gratis</span>
+    </div>
+
+    <div class="res-card" onclick="sendPrompt('Cuéntame sobre PM PrepCast como simulador para el examen CAPM')">
+      <div class="res-type">Simulador · Web</div>
+      <div class="res-name">PM PrepCast Simulator</div>
+      <div class="res-desc">El simulador más recomendado. +1,000 preguntas con explicaciones detalladas. Curso ATP de 23h también disponible.</div>
+      <span class="res-tag">prepcast.com · ~USD 99</span>
+    </div>
+
+    <div class="res-card" onclick="sendPrompt('Qué recursos gratuitos hay en pmi.org para preparar el CAPM?')">
+      <div class="res-type">Web gratuita</div>
+      <div class="res-name">PMI.org + Rebel's Guide</div>
+      <div class="res-desc">ECO gratuito, webinars y comunidad oficial en pmi.org. RebelsGuideToPM.com: guías y reviews actualizadas a 2026.</div>
+      <span class="res-tag">Completamente gratuito</span>
+    </div>
+
+  </div>
+
+  <div class="section-title">Explora más</div>
+  <div class="ask-row">
+    <button class="ask-btn" onclick="sendPrompt('¿Cuál es la diferencia entre enfoque predictivo y ágil para el examen CAPM 2026?')">Predictivo vs ágil ↗</button>
+    <button class="ask-btn" onclick="sendPrompt('¿Vale la pena la membresía PMI para el CAPM sin membresía?')">¿Membresía PMI sí o no? ↗</button>
+    <button class="ask-btn" onclick="sendPrompt('Dame un plan de estudio detallado de 12 semanas para el CAPM')">Plan de 12 semanas ↗</button>
+    <button class="ask-btn" onclick="sendPrompt('¿Cómo aprovechar mi experiencia en obras de ingeniería civil para el CAPM?')">Mi experiencia en obras ↗</button>
+  </div>
+
+</div>
+
+<script>
+function toggle(body) {
+  const detail = body.querySelector('.step-detail');
+  const btn = body.querySelector('.expand-btn');
+  if (detail.classList.contains('open')) {
+    detail.classList.remove('open');
+    btn.textContent = 'Ver detalles ↓';
+  } else {
+    detail.classList.add('open');
+    btn.textContent = 'Ocultar ↑';
+  }
+}
+</script>
