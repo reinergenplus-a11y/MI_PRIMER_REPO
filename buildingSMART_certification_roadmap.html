@@ -1,0 +1,303 @@
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Hoja de ruta de certificación buildingSMART Internacional 2026</h2>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.hero{background:linear-gradient(135deg,#042C53 0%,#185FA5 60%,#378ADD 100%);border-radius:var(--border-radius-lg);padding:2rem 2rem 1.5rem;margin-bottom:1.5rem;color:#fff}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:0.5px solid rgba(255,255,255,0.3);border-radius:20px;padding:4px 14px;font-size:13px;margin-bottom:1rem}
+.hero h1{font-size:22px;font-weight:500;margin-bottom:.4rem;color:#fff}
+.hero p{font-size:15px;color:rgba(255,255,255,0.82);line-height:1.6}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:1.2rem}
+.stat{background:rgba(255,255,255,0.12);border-radius:var(--border-radius-md);padding:.75rem 1rem;border:0.5px solid rgba(255,255,255,0.2)}
+.stat-n{font-size:20px;font-weight:500;color:#fff}
+.stat-l{font-size:12px;color:rgba(255,255,255,0.75);margin-top:2px}
+
+.path-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-secondary);margin-bottom:.75rem}
+.connector{display:flex;align-items:center;gap:6px;margin:6px 0 6px 20px}
+.connector-line{width:2px;height:28px;background:#B5D4F4;border-radius:2px;margin-left:22px}
+.arr{color:#378ADD;font-size:18px;margin-top:2px}
+
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:4px;transition:border-color .15s}
+.card:hover{border-color:var(--color-border-secondary)}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:.75rem}
+.card-title-block{display:flex;align-items:center;gap:12px}
+.level-badge{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lv1{background:#E6F1FB}
+.lv2{background:#B5D4F4}
+.lv3{background:#185FA5}
+.lv4{background:#042C53}
+.lv1 .lv-n{color:#0C447C;font-size:15px;font-weight:500}
+.lv2 .lv-n{color:#0C447C;font-size:15px;font-weight:500}
+.lv3 .lv-n{color:#E6F1FB;font-size:15px;font-weight:500}
+.lv4 .lv-n{color:#85B7EB;font-size:15px;font-weight:500}
+.card-name{font-size:18px;font-weight:500;color:var(--color-text-primary)}
+.card-sub{font-size:13px;color:var(--color-text-secondary);margin-top:2px}
+.price-block{text-align:right;flex-shrink:0}
+.price-main{font-size:18px;font-weight:500;color:#185FA5}
+.price-note{font-size:12px;color:var(--color-text-secondary)}
+.status-pill{display:inline-block;border-radius:20px;padding:3px 10px;font-size:12px;font-weight:500}
+.pill-free{background:#EAF3DE;color:#3B6D11}
+.pill-avail{background:#E6F1FB;color:#0C447C}
+.pill-pilot{background:#FAEEDA;color:#854F0B}
+.pill-adv{background:#E6F1FB;color:#0C447C}
+
+.card-body{font-size:15px;color:var(--color-text-secondary);line-height:1.65;margin-bottom:.9rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:.9rem}
+.tag{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:6px;padding:3px 9px;font-size:12px;color:var(--color-text-secondary)}
+.meta-row{display:flex;flex-wrap:wrap;gap:1rem;font-size:13px;color:var(--color-text-secondary);margin-bottom:.9rem}
+.meta-item{display:flex;align-items:center;gap:5px}
+.meta-item i{font-size:15px;color:#378ADD}
+.req-box{background:var(--color-background-secondary);border-left:3px solid #378ADD;border-radius:0 6px 6px 0;padding:.6rem 1rem;font-size:13px;color:var(--color-text-secondary);margin-bottom:.9rem}
+.req-box strong{color:var(--color-text-primary);font-weight:500}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.link-btn{display:inline-flex;align-items:center;gap:5px;background:var(--color-background-primary);border:0.5px solid #B5D4F4;border-radius:var(--border-radius-md);padding:5px 12px;font-size:13px;color:#185FA5;text-decoration:none;cursor:pointer}
+.link-btn:hover{background:#E6F1FB;border-color:#378ADD}
+.link-btn i{font-size:14px}
+
+.highlight-card{background:#E6F1FB;border:2px solid #378ADD;border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin:1.5rem 0}
+.highlight-card h3{font-size:16px;font-weight:500;color:#042C53;margin-bottom:.6rem}
+.highlight-card p{font-size:15px;color:#185FA5;line-height:1.65}
+.route{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:.75rem}
+.route-step{background:#fff;border:1.5px solid #378ADD;border-radius:var(--border-radius-md);padding:6px 14px;font-size:14px;font-weight:500;color:#042C53}
+.route-arr{color:#378ADD;font-size:18px;font-weight:500}
+.route-opt{background:#E6F1FB;border:1.5px dashed #378ADD;border-radius:var(--border-radius-md);padding:6px 14px;font-size:14px;color:#185FA5}
+
+.section-title{font-size:16px;font-weight:500;color:var(--color-text-primary);margin:1.5rem 0 .75rem;display:flex;align-items:center;gap:8px}
+.section-title i{color:#378ADD;font-size:18px}
+
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:1.5rem}
+.info-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.9rem 1rem;border:0.5px solid var(--color-border-tertiary)}
+.info-card-icon{font-size:20px;color:#378ADD;margin-bottom:.4rem}
+.info-card-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:.3rem}
+.info-card-body{font-size:13px;color:var(--color-text-secondary);line-height:1.55}
+
+.footer{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.5rem;margin-top:1.5rem;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--color-text-secondary)}
+.footer i{font-size:16px;color:#378ADD;flex-shrink:0}
+</style>
+
+<div style="padding:1rem 0">
+
+<div class="hero">
+  <div class="hero-badge"><i class="ti ti-certificate" aria-hidden="true"></i> buildingSMART International · 2026</div>
+  <h1>Hoja de ruta de certificación openBIM</h1>
+  <p>Guía completa de niveles, requisitos, precios y centros homologados para alcanzar la certificación profesional buildingSMART.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">18,560+</div><div class="stat-l">Profesionales certificados mundialmente</div></div>
+    <div class="stat"><div class="stat-n">4 niveles</div><div class="stat-l">Entry · Foundation · Management · Practitioner</div></div>
+    <div class="stat"><div class="stat-n">ISO 19650</div><div class="stat-l">Estándar internacional alineado</div></div>
+  </div>
+</div>
+
+<div class="highlight-card">
+  <h3><i class="ti ti-route" aria-hidden="true"></i> Ruta recomendada para tu perfil</h3>
+  <p>Para ingenieros civiles con experiencia en Revit, Navisworks, metrados y gestión de información:</p>
+  <div class="route">
+    <div class="route-step">1. Foundation</div>
+    <span class="route-arr">→</span>
+    <div class="route-step">2. Practitioner</div>
+    <span class="route-arr">+</span>
+    <div class="route-opt">3. Management (opcional · ~2027)</div>
+  </div>
+</div>
+
+<p class="path-label" style="margin-top:1.5rem"><i class="ti ti-ladder" aria-hidden="true" style="color:#378ADD;margin-right:4px"></i> Niveles de certificación</p>
+
+<div class="card">
+  <div class="card-head">
+    <div class="card-title-block">
+      <div class="level-badge lv1"><span class="lv-n">01</span></div>
+      <div>
+        <div class="card-name">Entry — Nivel inicial</div>
+        <div class="card-sub">Punto de entrada a BIM y openBIM</div>
+      </div>
+    </div>
+    <div class="price-block">
+      <div class="price-main">Gratis</div>
+      <div class="price-note">sin coste</div>
+      <div style="margin-top:4px"><span class="status-pill pill-free">Disponible</span></div>
+    </div>
+  </div>
+  <p class="card-body">Introducción a conceptos básicos de digitalización, estándares abiertos y principios openBIM. Disponible desde 2024 para cualquier persona sin requisitos previos. Más de 150 personas certificadas en España a través de jornadas gratuitas.</p>
+  <div class="tags">
+    <span class="tag">Sin requisitos previos</span>
+    <span class="tag">100% online</span>
+    <span class="tag">Autoestudio</span>
+    <span class="tag">Válido para principiantes</span>
+  </div>
+  <div class="meta-row">
+    <span class="meta-item"><i class="ti ti-help-circle" aria-hidden="true"></i> Sin examen formal / video + test gratuito</span>
+    <span class="meta-item"><i class="ti ti-clock" aria-hidden="true"></i> Sin límite de tiempo</span>
+    <span class="meta-item"><i class="ti ti-refresh" aria-hidden="true"></i> Intentos ilimitados (espera 24h entre intentos)</span>
+  </div>
+  <div class="links">
+    <a class="link-btn" href="https://education.buildingsmart.org/entry-level-introduction/" target="_blank"><i class="ti ti-external-link"></i> Plataforma buildingSMART</a>
+    <a class="link-btn" href="https://butic.es/curso-oficial-preparacion-certificacion-profesional-buildingsmart/" target="_blank"><i class="ti ti-external-link"></i> Butic (España)</a>
+  </div>
+</div>
+
+<div class="connector-line"></div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="card-title-block">
+      <div class="level-badge lv2"><span class="lv-n">02</span></div>
+      <div>
+        <div class="card-name">Foundation — Fundamentos BIM</div>
+        <div class="card-sub">Primer nivel formal · Título: bQ (buildingSMART Foundation Qualified)</div>
+      </div>
+    </div>
+    <div class="price-block">
+      <div class="price-main">75–125 €</div>
+      <div class="price-note">solo tasa de examen</div>
+      <div style="margin-top:4px"><span class="status-pill pill-avail">Disponible ya</span></div>
+    </div>
+  </div>
+  <p class="card-body">El nivel central del programa. Cubre BIM, openBIM, gestión de información, ISO 19650, IFC, BCF, IDS, bSDD y buenas prácticas colaborativas. Actualizado en enero 2025 con nuevos módulos sobre IDS, UCM y openCDE. El examen de recuperación tiene el mismo coste desde 2025.</p>
+  <div class="tags">
+    <span class="tag">IFC · BCF · IDS · bSDD</span>
+    <span class="tag">ISO 19650</span>
+    <span class="tag">openCDE</span>
+    <span class="tag">Gestión de información</span>
+    <span class="tag">BIM colaborativo</span>
+  </div>
+  <div class="meta-row">
+    <span class="meta-item"><i class="ti ti-help-circle" aria-hidden="true"></i> 25 preguntas múltiple opción</span>
+    <span class="meta-item"><i class="ti ti-clock" aria-hidden="true"></i> 30 minutos</span>
+    <span class="meta-item"><i class="ti ti-chart-bar" aria-hidden="true"></i> Mínimo 75% para aprobar</span>
+    <span class="meta-item"><i class="ti ti-refresh" aria-hidden="true"></i> 2 intentos (reexamen mismo precio)</span>
+  </div>
+  <div class="req-box"><strong>Requisito previo:</strong> Completar un curso homologado por buildingSMART con un centro autorizado. Mínimo 16 horas lectivas. El certificado no caduca.</div>
+  <div class="links">
+    <a class="link-btn" href="https://education.buildingsmart.org/foundation/" target="_blank"><i class="ti ti-external-link"></i> Foundation oficial</a>
+    <a class="link-btn" href="https://www.buildingsmart.es/certificacion/nivel-fundamentos/" target="_blank"><i class="ti ti-external-link"></i> buildingSMART Spain</a>
+    <a class="link-btn" href="https://butic.es/curso-oficial-preparacion-certificacion-profesional-buildingsmart/" target="_blank"><i class="ti ti-external-link"></i> Butic (líder España)</a>
+    <a class="link-btn" href="https://editeca.com/certificacion-buildingsmart-como-certificarse-profesionalmente-en-bim/" target="_blank"><i class="ti ti-external-link"></i> Editeca</a>
+    <a class="link-btn" href="https://www.rfaeco.com/curso/certificacion-profesional-buildingsmart/" target="_blank"><i class="ti ti-external-link"></i> RF AECO</a>
+  </div>
+</div>
+
+<div class="connector-line"></div>
+
+<div class="card">
+  <div class="card-head">
+    <div class="card-title-block">
+      <div class="level-badge lv3"><span class="lv-n">03</span></div>
+      <div>
+        <div class="card-name">Management — Gestión BIM</div>
+        <div class="card-sub">Título: bS-QP-2 · buildingSMART Management Qualified</div>
+      </div>
+    </div>
+    <div class="price-block">
+      <div class="price-main">75–125 €</div>
+      <div class="price-note">tasa estimada</div>
+      <div style="margin-top:4px"><span class="status-pill pill-pilot">Previsto ~2027 en España</span></div>
+    </div>
+  </div>
+  <p class="card-body">Orientado a BIM Managers, coordinadores y responsables de implementación. Cubre estrategia BIM, dirección de equipos, requisitos de información organizacional y gestión de proyectos complejos. En España está en fase piloto; se espera disponibilidad general hacia 2027.</p>
+  <div class="tags">
+    <span class="tag">BIM Manager</span>
+    <span class="tag">Estrategia BIM</span>
+    <span class="tag">EIR / BEP</span>
+    <span class="tag">Gestión de equipos</span>
+    <span class="tag">Implementación BIM</span>
+  </div>
+  <div class="meta-row">
+    <span class="meta-item"><i class="ti ti-help-circle" aria-hidden="true"></i> 25–30 preguntas múltiple opción</span>
+    <span class="meta-item"><i class="ti ti-clock" aria-hidden="true"></i> 30–36 minutos</span>
+    <span class="meta-item"><i class="ti ti-chart-bar" aria-hidden="true"></i> 75% para aprobar</span>
+  </div>
+  <div class="req-box"><strong>Requisito previo:</strong> Certificado Foundation. No es obligatorio para llegar al Practitioner, pero complementa el perfil de dirección. El certificado no caduca.</div>
+  <div class="links">
+    <a class="link-btn" href="https://education.buildingsmart.org/our-program/" target="_blank"><i class="ti ti-external-link"></i> Programa oficial</a>
+    <a class="link-btn" href="https://www.buildingsmart.es/certificacion/" target="_blank"><i class="ti ti-external-link"></i> buildingSMART Spain</a>
+  </div>
+</div>
+
+<div class="connector-line"></div>
+
+<div class="card" style="border:2px solid #185FA5">
+  <div style="margin-bottom:.5rem"><span class="status-pill pill-avail" style="font-size:13px;background:#042C53;color:#85B7EB">★ Nivel máximo de certificación</span></div>
+  <div class="card-head">
+    <div class="card-title-block">
+      <div class="level-badge lv4"><span class="lv-n">04</span></div>
+      <div>
+        <div class="card-name">Practitioner — openBIM Practitioner</div>
+        <div class="card-sub">Título: bCP · buildingSMART Certified Practitioner</div>
+      </div>
+    </div>
+    <div class="price-block">
+      <div class="price-main">Consultar</div>
+      <div class="price-note">según proveedor</div>
+      <div style="margin-top:4px"><span class="status-pill pill-adv">Disponible 2025–2026</span></div>
+    </div>
+  </div>
+  <p class="card-body">El nivel avanzado. Evalúa la aplicación práctica real de openBIM: coordinación de modelos, validación IFC, gestión de información según ISO 19650, uso de IDS/BCF/bSDD en proyectos reales. A diferencia del Foundation, el examen permite usar herramientas BIM durante la prueba. Especialidades disponibles: openBIM Coordination, openBIM Management, openBIM Specialism, COBie.</p>
+  <div class="tags">
+    <span class="tag">IFC avanzado</span>
+    <span class="tag">Coordinación de modelos</span>
+    <span class="tag">Validación IDS</span>
+    <span class="tag">openCDE</span>
+    <span class="tag">ISO 19650 aplicada</span>
+    <span class="tag">Gestión del ciclo de vida</span>
+    <span class="tag">BCF en proyectos reales</span>
+  </div>
+  <div class="meta-row">
+    <span class="meta-item"><i class="ti ti-tools" aria-hidden="true"></i> Examen práctico con herramientas</span>
+    <span class="meta-item"><i class="ti ti-clock" aria-hidden="true"></i> Alta intensidad</span>
+    <span class="meta-item"><i class="ti ti-chart-bar" aria-hidden="true"></i> 75% para aprobar</span>
+    <span class="meta-item"><i class="ti ti-refresh" aria-hidden="true"></i> Revalidación periódica</span>
+  </div>
+  <div class="req-box">
+    <strong>Requisitos obligatorios:</strong>
+    <br>· Certificado Foundation vigente
+    <br>· Curso homologado de mínimo 24 horas efectivas (completado en el último año)
+    <br>· Mínimo 2 años de experiencia práctica en proyectos openBIM con estándares buildingSMART
+  </div>
+  <div class="links">
+    <a class="link-btn" href="https://education.buildingsmart.org/openbim-practitioner/" target="_blank"><i class="ti ti-external-link"></i> Practitioner oficial</a>
+    <a class="link-btn" href="https://www.buildingsmart.es/certificacion/nivel-practitioner/" target="_blank"><i class="ti ti-external-link"></i> buildingSMART Spain</a>
+    <a class="link-btn" href="https://butic.es/nivel-openbim-practitioner-buildingsmart/" target="_blank"><i class="ti ti-external-link"></i> Butic Practitioner</a>
+  </div>
+</div>
+
+<p class="section-title"><i class="ti ti-info-circle" aria-hidden="true"></i> Información práctica clave</p>
+<div class="info-grid">
+  <div class="info-card">
+    <div class="info-card-icon"><i class="ti ti-currency-euro" aria-hidden="true"></i></div>
+    <div class="info-card-title">Tasa de examen</div>
+    <div class="info-card-body">Foundation: 100 € + IVA (examen de recuperación: 100 € + IVA desde 2025). Rango internacional: 75–125 €.</div>
+  </div>
+  <div class="info-card">
+    <div class="info-card-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
+    <div class="info-card-title">Centros homologados</div>
+    <div class="info-card-body">Butic (líder, 317 certificados), Editeca, RF AECO Competence Center, SIMBIM/Graphisoft y más de 100 proveedores globales.</div>
+  </div>
+  <div class="info-card">
+    <div class="info-card-icon"><i class="ti ti-calendar" aria-hidden="true"></i></div>
+    <div class="info-card-title">Vigencia del certificado</div>
+    <div class="info-card-body">Foundation y Management: sin caducidad. Practitioner: sujeto a revalidación periódica según buildingSMART.</div>
+  </div>
+  <div class="info-card">
+    <div class="info-card-icon"><i class="ti ti-device-laptop" aria-hidden="true"></i></div>
+    <div class="info-card-title">Modalidad del examen</div>
+    <div class="info-card-body">100% online desde tu ordenador, a través de la plataforma Moodle de buildingSMART. Resultado inmediato.</div>
+  </div>
+  <div class="info-card">
+    <div class="info-card-icon"><i class="ti ti-award" aria-hidden="true"></i></div>
+    <div class="info-card-title">Resultado al aprobar</div>
+    <div class="info-card-body">Certificado PDF + insignia digital + registro público en la web de buildingSMART International y buildingSMART Spain.</div>
+  </div>
+  <div class="info-card">
+    <div class="info-card-icon"><i class="ti ti-globe" aria-hidden="true"></i></div>
+    <div class="info-card-title">Reconocimiento</div>
+    <div class="info-card-body">Certificación internacional válida en todos los capítulos de buildingSMART. Disponible en más de 15 países.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <i class="ti ti-alert-circle" aria-hidden="true"></i>
+  <span>Los precios de los cursos de preparación varían según el proveedor (desde ~300 € hasta más de 1,000 €). La tasa de examen está incluida en la mayoría de los cursos homologados. Verifica precios actualizados directamente con cada centro antes de inscribirte.</span>
+</div>
+
+</div>
