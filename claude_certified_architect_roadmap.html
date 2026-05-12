@@ -1,0 +1,463 @@
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-size: 16px; }
+
+.hero {
+  background: linear-gradient(135deg, #EEEDFE 0%, #E1F5EE 100%);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 0.5px solid #AFA9EC;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.hero-badge {
+  background: #534AB7;
+  color: #EEEDFE;
+  border-radius: 50%;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+.hero-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #3C3489;
+  line-height: 1.3;
+}
+.hero-sub {
+  font-size: 16px;
+  color: #534AB7;
+  margin-top: 4px;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #534AB7;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 2rem 0 1rem;
+  padding-left: 4px;
+  border-left: 3px solid #534AB7;
+  padding-left: 10px;
+}
+
+.steps-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.step-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  position: relative;
+}
+.step-card:hover { border-color: var(--color-border-secondary); }
+
+.step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.num-purple { background: #EEEDFE; color: #3C3489; }
+.num-teal   { background: #E1F5EE; color: #085041; }
+.num-coral  { background: #FAECE7; color: #712B13; }
+.num-amber  { background: #FAEEDA; color: #633806; }
+.num-green  { background: #EAF3DE; color: #27500A; }
+
+.step-body { flex: 1; }
+.step-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+.step-desc {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.pill {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-right: 6px;
+  margin-top: 4px;
+}
+.pill-free     { background: #E1F5EE; color: #085041; }
+.pill-price    { background: #EEEDFE; color: #3C3489; }
+.pill-time     { background: #FAEEDA; color: #633806; }
+.pill-req      { background: #FAECE7; color: #712B13; }
+.pill-pass     { background: #EAF3DE; color: #27500A; }
+
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #534AB7;
+  cursor: pointer;
+  width: fit-content;
+}
+.link-row:hover { text-decoration: underline; }
+
+.domains-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.domain-card {
+  border-radius: var(--border-radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.d1 { background: #EEEDFE; border: 0.5px solid #AFA9EC; }
+.d2 { background: #E1F5EE; border: 0.5px solid #5DCAA5; }
+.d3 { background: #FAEEDA; border: 0.5px solid #EF9F27; }
+.d4 { background: #FAECE7; border: 0.5px solid #F0997B; }
+.d5 { background: #EAF3DE; border: 0.5px solid #97C459; }
+.domain-pct {
+  font-size: 22px;
+  font-weight: 500;
+}
+.d1 .domain-pct { color: #3C3489; }
+.d2 .domain-pct { color: #085041; }
+.d3 .domain-pct { color: #633806; }
+.d4 .domain-pct { color: #712B13; }
+.d5 .domain-pct { color: #27500A; }
+.domain-name {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.d1 .domain-name { color: #534AB7; }
+.d2 .domain-name { color: #0F6E56; }
+.d3 .domain-name { color: #854F0B; }
+.d4 .domain-name { color: #993C1D; }
+.d5 .domain-name { color: #3B6D11; }
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+.course-item {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.course-name { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+.course-detail { font-size: 14px; color: var(--color-text-secondary); }
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.price-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem;
+  text-align: center;
+}
+.price-card.featured { border: 2px solid #534AB7; }
+.price-amount {
+  font-size: 28px;
+  font-weight: 500;
+  color: #3C3489;
+}
+.price-label {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.price-note {
+  font-size: 13px;
+  color: #534AB7;
+  margin-top: 8px;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.stat-box {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 1rem;
+  text-align: center;
+}
+.stat-num {
+  font-size: 22px;
+  font-weight: 500;
+  color: #534AB7;
+}
+.stat-lab {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.badge-section {
+  background: #EEEDFE;
+  border: 0.5px solid #AFA9EC;
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.badge-icon {
+  font-size: 40px;
+}
+.badge-text { font-size: 16px; color: #3C3489; line-height: 1.6; }
+.badge-text strong { color: #26215C; font-weight: 500; }
+
+.divider {
+  height: 0.5px;
+  background: var(--color-border-tertiary);
+  margin: 2rem 0;
+}
+</style>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Guía completa de certificación Claude Certified Architect – Foundations (CCA-F)</h2>
+
+<div class="hero">
+  <div class="hero-badge" aria-hidden="true">
+    <i class="ti ti-certificate" style="font-size:32px;color:#CECBF6;"></i>
+  </div>
+  <div>
+    <div class="hero-title">Claude Certified Architect – Foundations</div>
+    <div class="hero-sub">CCA-F · Primera certificación oficial de Anthropic · Lanzada el 12 de marzo 2026</div>
+  </div>
+</div>
+
+<div class="section-label">Datos clave del examen</div>
+<div class="stats-row">
+  <div class="stat-box">
+    <div class="stat-num">60</div>
+    <div class="stat-lab">preguntas de opción múltiple</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">120 min</div>
+    <div class="stat-lab">duración total</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">720/1000</div>
+    <div class="stat-lab">puntaje mínimo para aprobar</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">2 días</div>
+    <div class="stat-lab">entrega del reporte de resultados</div>
+  </div>
+</div>
+
+<div class="section-label">Dominios del examen</div>
+<div class="domains-grid">
+  <div class="domain-card d1">
+    <div class="domain-pct">27%</div>
+    <div class="domain-name">Agentic Architecture & Orchestration</div>
+  </div>
+  <div class="domain-card d3">
+    <div class="domain-pct">20%</div>
+    <div class="domain-name">Claude Code Configuration & Workflows</div>
+  </div>
+  <div class="domain-card d4">
+    <div class="domain-pct">20%</div>
+    <div class="domain-name">Prompt Engineering & Structured Output</div>
+  </div>
+  <div class="domain-card d2">
+    <div class="domain-pct">18%</div>
+    <div class="domain-name">Tool Design & MCP Integration</div>
+  </div>
+  <div class="domain-card d5">
+    <div class="domain-pct">15%</div>
+    <div class="domain-name">Context Management & Reliability</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-label">Paso a paso para certificarte</div>
+<div class="steps-grid">
+
+  <div class="step-card">
+    <div class="step-num num-purple">1</div>
+    <div class="step-body">
+      <div class="step-title">Unirte al Claude Partner Network</div>
+      <div class="step-desc">El examen está disponible actualmente solo para empleados de organizaciones del Claude Partner Network. Cualquier empresa o freelance que lleve Claude al mercado puede aplicar gratuitamente. No hay tamaño mínimo de empresa.</div>
+      <span class="pill pill-free"><i class="ti ti-check" aria-hidden="true"></i> Gratis</span>
+      <span class="pill pill-time"><i class="ti ti-clock" aria-hidden="true"></i> 1–3 días</span>
+      <div class="link-row" onclick="openLink('https://claude.com/partners')">
+        <i class="ti ti-external-link" aria-hidden="true"></i> claude.com/partners
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num num-teal">2</div>
+    <div class="step-body">
+      <div class="step-title">Completar los cursos de Anthropic Academy en Skilljar</div>
+      <div class="step-desc">13 cursos autodirigidos, completamente gratuitos y abiertos a cualquier persona, sin importar si ya eres partner. Accede desde anthropic.skilljar.com. El orden recomendado es el siguiente:</div>
+      <div class="courses-grid" style="margin-top:12px;">
+        <div class="course-item">
+          <div class="course-name">Claude 101</div>
+          <div class="course-detail">Fundamentos y flujos de trabajo</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">Building with the Claude API</div>
+          <div class="course-detail">Curso insignia · 8.1 horas</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">Introduction to MCP</div>
+          <div class="course-detail">Fundamentos del protocolo</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">MCP Advanced Topics</div>
+          <div class="course-detail">Servidores y clientes MCP en Python</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">Claude Code in Action</div>
+          <div class="course-detail">CI/CD, hooks, CLAUDE.md</div>
+        </div>
+        <div class="course-item">
+          <div class="course-name">AI Fluency: Frameworks & Foundations</div>
+          <div class="course-detail">Marco 4D de colaboración IA</div>
+        </div>
+      </div>
+      <span class="pill pill-free">Todos gratuitos</span>
+      <span class="pill pill-time">6–10 semanas recomendadas</span>
+      <div class="link-row" onclick="openLink('https://anthropic.skilljar.com')">
+        <i class="ti ti-external-link" aria-hidden="true"></i> anthropic.skilljar.com
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num num-amber">3</div>
+    <div class="step-body">
+      <div class="step-title">Construir experiencia práctica real</div>
+      <div class="step-desc">El examen no evalúa trivia — evalúa juicio arquitectónico. Se requieren al menos 6 meses de experiencia práctica con la Claude API, Agent SDK y Claude Code. Construye proyectos que toquen al menos tres de los cinco dominios: agentes, MCP, Code, prompts y contexto.</div>
+      <span class="pill pill-req"><i class="ti ti-alert-circle" aria-hidden="true"></i> Requisito previo</span>
+      <span class="pill pill-time">Mínimo 6 meses de experiencia</span>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num num-green">4</div>
+    <div class="step-body">
+      <div class="step-title">Practicar con el examen de práctica oficial</div>
+      <div class="step-desc">Descarga la Exam Guide PDF desde la plataforma Skilljar. Realiza el examen de práctica disponible y apunta a obtener más de 900/1000 antes de registrarte para el examen real. También disponibles: 25 preguntas de práctica gratuitas y un plan de estudio de 12 semanas en claudecertifications.com.</div>
+      <span class="pill pill-free">Gratis</span>
+      <span class="pill pill-pass">Meta: 900+/1000 en práctica</span>
+      <div class="link-row" onclick="openLink('https://claudecertifications.com/claude-certified-architect/study-guide')">
+        <i class="ti ti-external-link" aria-hidden="true"></i> Plan de 12 semanas gratuito
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num num-coral" style="background:#FAECE7;color:#712B13;">5</div>
+    <div class="step-body">
+      <div class="step-title">Solicitar acceso y registrarse para el examen</div>
+      <div class="step-desc">Una vez que seas parte del Claude Partner Network, solicita acceso al examen desde el portal de Anthropic Academy. Luego regístrate en el portal de Skilljar para programar tu sesión proctoreada.</div>
+      <span class="pill pill-req">Requiere membresía Partner Network</span>
+      <div class="link-row" onclick="openLink('https://anthropic.skilljar.com/claude-certified-architect-foundations-access-request')">
+        <i class="ti ti-external-link" aria-hidden="true"></i> Solicitar acceso al examen
+      </div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num num-purple">6</div>
+    <div class="step-body">
+      <div class="step-title">Rendir el examen proctoreado</div>
+      <div class="step-desc">60 preguntas de opción múltiple basadas en escenarios reales de producción (de un banco de 6 escenarios, se seleccionan 4 aleatoriamente por sesión). El examen es cerrado: sin recursos externos, sin IA, sin pausas. Delivery online proctoreado o en centro de evaluación.</div>
+      <span class="pill pill-time">120 minutos · Sin pausas</span>
+      <span class="pill pill-pass">Puntaje mínimo: 720/1000</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="section-label">Precios</div>
+<div class="price-grid">
+  <div class="price-card featured">
+    <div class="price-amount">$0</div>
+    <div class="price-label">Primeros 5,000 empleados de organizaciones Partner Network</div>
+    <div class="price-note">Acceso de early adopter · Cupos limitados</div>
+  </div>
+  <div class="price-card">
+    <div class="price-amount">$99</div>
+    <div class="price-label">Precio estándar del examen por intento (USD)</div>
+    <div class="price-note">Una vez agotados los 5,000 cupos gratuitos</div>
+  </div>
+  <div class="price-card">
+    <div class="price-amount">$0</div>
+    <div class="price-label">Todos los cursos de preparación en Anthropic Academy</div>
+    <div class="price-note">13 cursos gratuitos para todo el mundo</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section-label">Tiempo total estimado de preparación</div>
+<div class="domains-grid" style="margin-bottom:1.5rem;">
+  <div class="domain-card d2">
+    <div class="domain-pct" style="font-size:18px;">2–4 semanas</div>
+    <div class="domain-name">Desarrolladores con 6+ meses en Claude API y Claude Code</div>
+  </div>
+  <div class="domain-card d3">
+    <div class="domain-pct" style="font-size:18px;">6–10 semanas</div>
+    <div class="domain-name">Desarrolladores con experiencia general en IA, nuevos en Claude</div>
+  </div>
+  <div class="domain-card d1">
+    <div class="domain-pct" style="font-size:18px;">2–4 meses</div>
+    <div class="domain-name">Profesionales nuevos en desarrollo con Claude API (requiere construir proyectos reales)</div>
+  </div>
+</div>
+
+<div class="badge-section">
+  <div class="badge-icon" aria-hidden="true"><i class="ti ti-award" style="font-size:40px;color:#534AB7;"></i></div>
+  <div class="badge-text">
+    Al aprobar recibes una <strong>insignia digital CCA-F</strong> compartible en LinkedIn. El reporte de resultados con desglose por dominio llega en <strong>2 días hábiles</strong>. Anthropic tiene confirmadas más certificaciones para 2026: nivel vendedor, desarrollador y arquitecto avanzado.
+  </div>
+</div>
